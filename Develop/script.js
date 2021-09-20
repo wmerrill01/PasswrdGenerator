@@ -7,7 +7,7 @@ var specialCharsAllowed = "";
 var numbersAllowed = "";
 var allowUppercase = "";
 var allowLowercase = "";
-var passwordChars = [];
+var passwordChars = "";
 
 //password variables
 var specialCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
@@ -17,7 +17,7 @@ var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 
 //prompt to ask about characters
 
-function askHowManyCharacters(){
+function generatePassword(){
   var numberofCharacters = (prompt("How many characters do you want your password to be? must be between 8-128"));
 
   while(numberofCharacters <= 7 || numberofCharacters >= 129) {
@@ -57,16 +57,15 @@ function askHowManyCharacters(){
   var newPassword = ""
 
   for (var i = 0; i < numberofCharacters; i++) {
-    newPassword = newPassword + passwordChars(Math.floor(Math.random() * passwordChars.length));
+    newPassword = newPassword + passwordChars[Math.floor(Math.random() * passwordChars.length)];
     console.log(newPassword)
   }
   return newPassword;
 
 
+
+
 }
-
-askHowManyCharacters();
-
 
 
 

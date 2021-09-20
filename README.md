@@ -1,5 +1,7 @@
 # passwordgenerator
 
+<br>
+
 
 ## Summary
 
@@ -8,6 +10,6 @@
 
 ## Screenshot
 
-    alkdfja.
+![Password Generator.](./Assets/passwordgenSS.png)
 
 ## Links to page
