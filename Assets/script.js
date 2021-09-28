@@ -10,33 +10,34 @@ var allowLowercase = "";
 var passwordChars = "";
 
 //password variables
-var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var specialCharacters = "!#$%&()*+,-./\:\;<=>?@[\]^_`{|}~";
+var numbers = "1234567890";
+var lowercase = "abcdefghijklmnopqrstuvwxyz";
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 //prompt to ask about characters
 
 function generatePassword(){
-  var numberofCharacters = (prompt("How many characters do you want your password to be? must be between 8-128"));
+  var numberofCharacters = window.prompt("How many characters do you want your password to be? must be between 8-128");
 
   while(numberofCharacters <= 7 || numberofCharacters >= 129) {
     alert("Must be between 8 and 128 characters!")
-    var numberofCharacters = (prompt("How many characters do you want your password to be? must be between 8-128"));
+    var numberofCharacters = window.prompt("How many characters do you want your password to be? must be between 8-128");
+    var charAsNumber = parseInt(numberofCharacters);
   }
 
-  var specialCharsAllowed = confirm("OK to include special characters.");
-  var numbersAllowed = confirm("OK to allow numbers.");
-  var allowLowercase = confirm("OK to allow lowercase letters.");
-  var allowUppercase = confirm("OK to allow uppercase letters.");
+  var specialCharsAllowed = window.confirm("OK to include special characters.");
+  var numbersAllowed = window.confirm("OK to allow numbers.");
+  var allowLowercase = window.confirm("OK to allow lowercase letters.");
+  var allowUppercase = window.confirm("OK to allow uppercase letters.");
 
 //Make them choose a parameter
   while(specialCharsAllowed === false && numbersAllowed === false && allowLowercase === false && allowUppercase === false) {
     alert("Choose at least one parameter.");
-    var specialCharsAllowed = confirm("OK to include special characters.");
-    var numbersAllowed = confirm("OK to allow numbers.");
-    var allowLowercase = confirm("OK to allow lowercase letters.");
-    var allowUppercase = confirm("OK to allow uppercase letters.");
+    var specialCharsAllowed = window.confirm("OK to include special characters.");
+    var numbersAllowed = window.confirm("OK to allow numbers.");
+    var allowLowercase = window.confirm("OK to allow lowercase letters.");
+    var allowUppercase = window.confirm("OK to allow uppercase letters.");
   }
 
   if (specialCharsAllowed === true){
@@ -54,10 +55,16 @@ function generatePassword(){
   console.log(passwordChars)
 
   //I need to put the password into the document....
-  var newPassword = ""
+  
+  
+  var newPassword = "";
 
   for (var i = 0; i < numberofCharacters; i++) {
-    newPassword = newPassword + passwordChars[Math.floor(Math.random() * passwordChars.length)];
+
+    var number = Math.floor(Math.random() * passwordChars.length);
+    newPassword = newPassword + passwordChars.charAt(number);
+    console.log(number)
+    
     console.log(newPassword)
   }
   return newPassword;
